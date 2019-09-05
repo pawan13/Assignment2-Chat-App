@@ -6,3 +6,6 @@ The app First UI updated and client implementation of SignalR for the chat.
 
 # REFERENCES
 https://docs.microsoft.com/en-us/aspnet/signalr/overview/getting-started/tutorial-getting-started-with-signalr
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/signalr?view=aspnetcore-2.2&tabs=visual-studio
+
+
