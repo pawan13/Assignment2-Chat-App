@@ -40,7 +40,7 @@ namespace Assignment2_ChatApp.Droid
             UserName = e.TxtName;
             BackgroundColor = e.BackgroundColor;
 
-            var hubConnection = new HubConnection("http://cforbeginners.com:901");
+            var hubConnection = new HubConnection("https://localhost:5001/chathub");
             var chatHubProxy = hubConnection.CreateHubProxy("ChatHub");
 
             chatHubProxy.On<string, int, string>("UpdateChatMessage", (message, color, user) =>
