@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +41,7 @@ namespace Assignment2_ChatApp.View
             {
                 await DisplayAlert("User Add", returnvalue, "OK");
 
-                await Navigation.PushAsync(new HomePage());
+                await Navigation.PushAsync(new HomePage(users.Username));
             }
             else
             {
