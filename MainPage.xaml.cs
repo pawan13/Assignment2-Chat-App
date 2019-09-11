@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -29,7 +29,7 @@ namespace Assignment2_ChatApp
             bool login = await LoginValidate(loginname.Text, loginpassword.Text);
             if(login == true)
             {
-                await Navigation.PushAsync(new View.HomePage());
+                await Navigation.PushAsync(new View.HomePage(loginname.Text));
             }
            // throw new NotImplementedException();
         }
