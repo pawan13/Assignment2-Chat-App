@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -7,22 +7,34 @@
              x:Class="Assignment2_ChatApp.View.FriendListPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label  VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            
+            <ListView ItemSelected="selectfriend" x:Name="listView" Margin="20" SelectedItem = "{Binding ID}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding FriendUsername}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Remove Friend" Clicked="RemoveFriend"/>
             <Grid Grid.Row="1" VerticalOptions="End">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!--ImageButton Grid.Column="0" x:Name="ViewFriend"
-                   Source="magnifying_glass.png"
-                   Clicked="Go_FriendListPage_Clicked" CornerRadius="20"/-->
-                <Button Grid.Column="0" x:Name="ViewFriend"
-                   ImageSource="magnifier.png"
-                   Clicked="Go_FriendListPage_Clicked" CornerRadius="20"/>
-                <Button Grid.Column="1" x:Name="SearchFriend"  ImageSource="magnifier.png" Clicked="Go_SearchFriendPage_Clicked"/>
-                <Button Grid.Column="2" x:Name="Profile" ImageSource="magnifier.png" Clicked="Go_ProfilePage_Clicked"/>
+                
+                <Button Grid.Column="0" 
+                        x:Name="ViewFriend"
+                        ImageSource="list.png"
+                        Clicked="Go_FriendListPage_Clicked" CornerRadius="20"/>
+                <Button Grid.Column="1" 
+                        x:Name="SearchFriend" 
+                        ImageSource="magnifier.png"
+                        Clicked="Go_SearchFriendPage_Clicked" CornerRadius="20"/>
+                <Button Grid.Column="2"
+                        x:Name="Profile"
+                        ImageSource="user.png"
+                        Clicked="Go_ProfilePage_Clicked" CornerRadius="20"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
