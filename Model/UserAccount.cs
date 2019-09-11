@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
@@ -23,6 +23,7 @@ namespace Assignment2_ChatApp.Model
         [PrimaryKey]
         public string ID { get; set; }
         public string Username { get; set; }
+        public string FriendUsername { get; set; }
 
         public FriendAccount()
         {
