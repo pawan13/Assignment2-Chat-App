@@ -10,14 +10,12 @@
             <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-           
             <Grid Grid.Row="1" VerticalOptions="End">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-             
                 <Button Grid.Column="0" 
                         x:Name="ViewFriend"
                         ImageSource="list.png"
