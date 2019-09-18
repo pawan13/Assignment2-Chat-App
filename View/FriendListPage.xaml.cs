@@ -41,24 +41,30 @@ namespace Assignment2_ChatApp.View
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            //listView.iText = "{Binding FriendUsername}";
-            listView.ItemsSource = await App.MyDatabase.FriendList(users);
+            List <Model.FriendAccount> friendlist = await App.MyDatabase.FriendList(users);
+            List<Model.FriendAccount> list = new List<Model.FriendAccount>();
+            foreach(Model.FriendAccount testlist in friendlist)
+            {
+                String name;
+                if(String.Equals(users.Username,testlist.FriendUsername))
+                {
+                    name = testlist.Username;
+                    testlist.Username = testlist.FriendUsername;
+                    testlist.FriendUsername = name;
+                }
+                list.Add(testlist);
+            }
+            listView.ItemsSource = list;
         }
 
         async void RemoveFriend(object sender, System.EventArgs e)
         {
-            // if(!string.IsNullOrEmpty(FriendID) && friend.Username == FriendID)
             if (!string.IsNullOrEmpty(friendid))
             {
                 Console.WriteLine("test 1 " + friendid);
                 string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Chattydata.db3");
                 SQLiteAsyncConnection _database = new SQLiteAsyncConnection(path);
                 Model.FriendAccount d1 = await _database.Table<Model.FriendAccount>().Where(x => x.ID == friendid).FirstOrDefaultAsync();
-                /*List<Model.FriendAccount> usercnt = await _database.Table<Model.FriendAccount>().ToListAsync();
-                int id = usercnt.Count - 1;
-                friend.ID = id.ToString();
-                friend.Username = users.Username;
-                friend.FriendUsername = d1.Username;*/
                 await App.MyDatabase.RemoveFriendInfo(d1);
                 await DisplayAlert("Successful", "Remove friend successfully", "OK");
                 await Navigation.PushAsync(new FriendListPage(users));
@@ -70,30 +76,24 @@ namespace Assignment2_ChatApp.View
             }
         }
 
+
         //Methods below are the navigation button to link to each page
         //1st button for this page(list the friend list for the current user)
         async void Go_FriendListPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FriendListPage(users));
-            //throw new NotImplementedException();
         }
 
         //2nd button for searching friend from all user's account database 
         async void Go_SearchFriendPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SearchFriendPage(users));
-            //throw new NotImplementedException();
         }
 
         //this page is link to profile page
         async void Go_ProfilePage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProfilePage(users));
-            //throw new NotImplementedException();
         }
     }
-    // everytime people login, ID will set to the Friendlist class (database), so when add user, it add into the table
-    //a search bar to search people in it and find it through database(Useraccount class)
-    //then, add user into the database(Friendlist class) binding with ID/username.
-    // 
 }
