@@ -30,15 +30,23 @@ namespace Assignment2_ChatApp.View
 
         async void SearchbuttonClicked(Object sender, EventArgs e)
         {
-           List<Model.UserAccount> search = await App.MyDatabase.GetFriendInfo(searchfriendname.Text);
-            if(search.Count > 0)
+            if(!String.Equals(searchfriendname.Text,users.Username))
             {
-                await Navigation.PushAsync(new ShowSearchResult(users.Username, search));
+                List<Model.UserAccount> search = await App.MyDatabase.GetFriendInfo(searchfriendname.Text);
+                if (search.Count > 0)
+                {
+                    await Navigation.PushAsync(new ShowSearchResult(users.Username, search));
+                }
+                else
+                {
+                    await DisplayAlert("Search Friend", "Friend could not be found", "OK");
+                }
             }
             else
             {
-                await DisplayAlert("Search Friend", "Friend could not be found", "OK");
+                await DisplayAlert("Search Friend", "You cannot search yourself as friend", "OK");
             }
+            
         }
                
         async void Go_FriendListPage_Clicked(object sender, EventArgs e)
