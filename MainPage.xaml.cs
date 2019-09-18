@@ -25,7 +25,6 @@ namespace Assignment2_ChatApp
         async void Login_Clicked(object sender, EventArgs e)
         {
             //this will run validation with database to ensure the account is there then login, or else it wont login
-            //await Navigation.PushAsync(new View.HomePage());
             bool login = await LoginValidate(loginname.Text, loginpassword.Text);
             if(login == true)
             {
@@ -50,7 +49,6 @@ namespace Assignment2_ChatApp
         {
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Chattydata.db3");
             _database = new SQLiteAsyncConnection(path);
-            //var data = _database.Table<Model.UserAccount>();
             Model.UserAccount d1 = await _database.Table<Model.UserAccount>().Where(x => x.Username == userName1 && x.Password == pwd1).FirstOrDefaultAsync();
 
             if (d1 == null)
