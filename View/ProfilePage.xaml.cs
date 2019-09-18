@@ -18,7 +18,6 @@ namespace Assignment2_ChatApp.View
         {
             InitializeComponent();
             Showuser(user.Username);
-            
         }
 
         async void Showuser(String username)
@@ -34,26 +33,21 @@ namespace Assignment2_ChatApp.View
         {
             await DisplayAlert("Quit", "You wish to LogOut?", "Confirm");
             await Navigation.PushAsync(new MainPage());
-             //throw new NotImplementedException();
         }
 
         async void Go_FriendListPage_Clicked(object sender, EventArgs e)
         {
-           
             await Navigation.PushAsync(new FriendListPage(users));
-            //throw new NotImplementedException();
         }
 
         async void Go_SearchFriendPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SearchFriendPage(users));
-            //throw new NotImplementedException();
         }
 
         async void Go_ProfilePage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProfilePage(users));
-            //throw new NotImplementedException();
         }
     }
 }
