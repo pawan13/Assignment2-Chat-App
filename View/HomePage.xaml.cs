@@ -33,19 +33,16 @@ namespace Assignment2_ChatApp.View
         async void Go_FriendListPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new FriendListPage(users));
-            //throw new NotImplementedException();
         }
 
         async void Go_SearchFriendPage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SearchFriendPage(users));
-            //throw new NotImplementedException();
         }
 
         async void Go_ProfilePage_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new ProfilePage(users));
-            //throw new NotImplementedException();
         }
     }
 }
