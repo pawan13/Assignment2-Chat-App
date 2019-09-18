@@ -24,9 +24,8 @@ namespace Assignment2_ChatApp.View
             _database.DropTableAsync<Model.FriendAccount>().Wait();
             _database.CreateTableAsync<Model.FriendAccount>().Wait();
 
-            _database.InsertAsync(new Model.FriendAccount { ID = "1", Username = "test1", FriendUsername = "test3" });
-            _database.InsertAsync(new Model.FriendAccount { ID = "2", Username = "test2", FriendUsername = "test3" });
-            //_database.InsertAsync(new Model.UserAccount { Username = " test11", Password = "123" });
+            _database.CreateTableAsync<Model.FriendID>().Wait();
+            _database.InsertAsync(new Model.FriendID { ID = "1", FriendlistID = "0" });
         }
 
         public Task<List<Model.UserAccount>> GetAllInfo()
@@ -42,8 +41,6 @@ namespace Assignment2_ChatApp.View
 
         async public Task<string> AddUser(Model.UserAccount user)
         {
-            //var data = _database.Table<Model.UserAccount>();
-            //var d1 = data.Where(x => x.Username == user.Username).FirstOrDefaultAsync();
             Model.UserAccount d1 = await _database.Table<Model.UserAccount>().Where(x => x.Username == user.Username).FirstOrDefaultAsync();
             if (d1 == null)
             {
@@ -53,7 +50,6 @@ namespace Assignment2_ChatApp.View
             else
             {
                 return "The username already exist";
-
             }
         }
 
@@ -64,9 +60,12 @@ namespace Assignment2_ChatApp.View
 
         public Task<List<Model.UserAccount>> GetFriendInfo(string name)
         {
-            // Model.UserAccount d1 = await _database.Table<Model.UserAccount>().Where(x => x.Username == userName1 && x.Password == pwd1).FirstOrDefaultAsync();
-
             return _database.Table<Model.UserAccount>().Where(x => x.Username == name).ToListAsync();
+        }
+
+        public async Task SaveFriendIDInfo(Model.FriendID info)
+        {
+            await _database.UpdateAsync(info);
         }
 
         public async Task SaveFriendInfo(Model.FriendAccount info)
@@ -93,6 +92,5 @@ namespace Assignment2_ChatApp.View
 
             }
         }
-
     }
 }
