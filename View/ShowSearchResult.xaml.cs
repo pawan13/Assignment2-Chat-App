@@ -16,7 +16,6 @@ namespace Assignment2_ChatApp.View
         Model.UserAccount users = new Model.UserAccount();
         Model.FriendAccount friend = new Model.FriendAccount();
         String friendid;
-  
         public ShowSearchResult(String username, List<Model.UserAccount> search)
         {
             InitializeComponent();
@@ -31,16 +30,13 @@ namespace Assignment2_ChatApp.View
             String IdInt = ide.ToString();
             friendid = IdInt;
         }
-   
 
         async void Showuser(String user)
         {
-            //await DisplayAlert("show", "show", "OK");
             string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Chattydata.db3");
             SQLiteAsyncConnection _database = new SQLiteAsyncConnection(path);
             Model.UserAccount d1 = await _database.Table<Model.UserAccount>().Where(x => x.Username == user).FirstOrDefaultAsync();
             users = d1;
-            //listView.ItemsSource = await App.MyDatabase.FriendList(users);
         }
 
         
@@ -53,14 +49,17 @@ namespace Assignment2_ChatApp.View
                 SQLiteAsyncConnection _database = new SQLiteAsyncConnection(path);
                 Model.UserAccount d1 = await _database.Table<Model.UserAccount>().Where(x => x.ID == friendid).FirstOrDefaultAsync();
                 Model.FriendAccount d2 = await _database.Table<Model.FriendAccount>().Where(x => (x.Username == users.Username && x.FriendUsername == d1.Username) || (x.Username == d1.Username && x.FriendUsername == users.Username)).FirstOrDefaultAsync();
-
-                if(d2 == null)
+                Model.FriendID d3 = await _database.Table<Model.FriendID>().Where(x => x.ID == "1").FirstOrDefaultAsync();
+                if (d2 == null)
                 {
                     List<Model.FriendAccount> usercnt = await _database.Table<Model.FriendAccount>().ToListAsync();
-                    int id = usercnt.Count + 1;
+                    int id = Convert.ToInt32(d3.FriendlistID);
+                    id = id + 1;
                     friend.ID = id.ToString();
                     friend.Username = users.Username;
                     friend.FriendUsername = d1.Username;
+                    d3.FriendlistID = id.ToString();
+                    await App.MyDatabase.SaveFriendIDInfo(d3);
                     await App.MyDatabase.SaveFriendInfo(friend);
                     await DisplayAlert("Successful", "Add friend successfully", "OK");
                 }
@@ -75,7 +74,5 @@ namespace Assignment2_ChatApp.View
                 await DisplayAlert("Add Friend", "Please select a friend", "OK");
             }     
         }
-
-    
     }
 }
