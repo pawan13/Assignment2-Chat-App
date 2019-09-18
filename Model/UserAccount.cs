@@ -31,4 +31,16 @@ namespace Assignment2_ChatApp.Model
         }
     }
 
+    public class FriendID
+    {
+        [PrimaryKey]
+        public string ID { get; set; }
+        public string FriendlistID { get; set; }
+        
+        public FriendID()
+        {
+
+        }
+    }
+
 }
