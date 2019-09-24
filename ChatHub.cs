@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
-namespace SignalRChat.Hubs
+namespace signalR.hub
 {
-    
-    public class ChatHub : Hub
+    public class Hubs : Hub
     {
         public Task JoinRoom(string roomName)
         {
@@ -25,6 +24,5 @@ namespace SignalRChat.Hubs
         {
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
-
     }
 }
