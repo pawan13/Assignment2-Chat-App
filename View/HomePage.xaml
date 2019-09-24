@@ -15,6 +15,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" 
                         x:Name="ViewFriend"
@@ -28,6 +29,10 @@
                         x:Name="Profile"
                         ImageSource="user.png"
                         Clicked="Go_ProfilePage_Clicked" CornerRadius="20"/>
+                <Button Grid.Column="3"
+                        x:Name="Group"
+                        ImageSource="group.png"
+                        Clicked="Go_Main_Clicked" CornerRadius="20"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
