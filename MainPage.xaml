@@ -9,7 +9,6 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Login.." />
         <Entry x:Name="loginname" Text="User Name"/>
         <Entry x:Name="loginpassword" Text="Password" IsPassword="False"/>
         <Button Text="Login" Clicked="Login_Clicked"/>
