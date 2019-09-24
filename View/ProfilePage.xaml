@@ -12,7 +12,7 @@
         <StackLayout>
             <Label  VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Label Text="Your username is " x:Name="user"/>
+            <Label Text="Your username is " x:Name="user" HorizontalOptions="CenterAndExpand" VerticalOptions="StartAndExpand"/>
             <Grid Grid.Row="1" VerticalOptions="End">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
