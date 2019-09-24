@@ -16,7 +16,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <Button Text="Remove Friend" Clicked="RemoveFriend"/>
-            <Grid Grid.Row="1" VerticalOptions="End">
+            <Grid Grid.Row="1" VerticalOptions="End" HeightRequest="100">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
