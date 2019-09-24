@@ -1,0 +1,21 @@
+Licenses
+
+1. group.png
+license type:CC 3.0
+author: Gregor Cresnar
+Accessable link: https://thenounproject.com/term/group-chat/547023/ 
+
+2.list.png
+license type: CC 3.0
+author: IconFinder
+Accessable link: https://www.iconfinder.com/icons/352389/bulleted_format_list_icon
+
+3.magnifier.png
+license type: CC3.0
+author: SimpleIcon
+Accessable link: https://www.flaticon.com/free-icon/magnifier_34202#term=magnifying%20glass&page=1&position=4
+
+4.user.png
+license type: CC 3.0
+author: Smashicons
+Accessable link: https://www.flaticon.com/free-icon/user_149452#term=user&page=1&position=7
