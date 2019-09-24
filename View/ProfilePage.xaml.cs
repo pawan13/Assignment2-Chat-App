@@ -49,5 +49,9 @@ namespace Assignment2_ChatApp.View
         {
             await Navigation.PushAsync(new ProfilePage(users));
         }
+        async void Go_Main_Clicked(object sender, EventArgs e)
+        {
+            //await Navigation.PushAsync();
+        }
     }
 }
